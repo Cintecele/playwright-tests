@@ -14,7 +14,7 @@ const reportConfig: OrtoniReportConfig = {
   title: "Playwright Framework with Typescript",
   showProject: true,
   filename: "OrtoniHtmlReport",
-  authorName: "Akshay Pai",
+  authorName: "authorName",
   preferredTheme: "dark",
   folderPath: "html-report",
   projectName: "Playwright Framework with Typescript",
@@ -85,7 +85,6 @@ const config: PlaywrightTestConfig = {
         }
       },
     },
-
     {
       name: `Firefox`,
       use: {
@@ -93,60 +92,6 @@ const config: PlaywrightTestConfig = {
         baseURL: testConfig[ENV],
         headless: true,
         viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-
-    {
-      name: `Edge`,
-      use: {
-        browserName: `chromium`,
-        channel: `msedge`,
-        baseURL: testConfig[ENV],
-        headless: false,
-        viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-    {
-      name: `WebKit`,
-      use: {
-        browserName: `webkit`,
-        baseURL: testConfig[ENV],
-        headless: true,
-        viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-    {
-      name: `Device`,
-      use: {
-        ...devices[`Pixel 4a (5G)`],
-        browserName: `chromium`,
-        channel: `chrome`,
-        baseURL: testConfig[ENV],
-        headless: true,
         ignoreHTTPSErrors: true,
         acceptDownloads: true,
         screenshot: `only-on-failure`,
