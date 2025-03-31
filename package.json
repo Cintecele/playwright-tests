@@ -20,10 +20,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akshayp7/playwright-typescipt-playwright-test.git"
+    "url": "https://github.com/Cintecele/playwright-tests.git"
   },
-  "author": "Akshay Pai",
-  "license": "MIT",
+  "author": "author",
+  "license": "free",
   "dependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@types/crypto-js": "^4.2.2",
