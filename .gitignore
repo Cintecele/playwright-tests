@@ -8,6 +8,11 @@ e2e/
 har/
 html-report/
 logs/
+target/
+.github/
+.idea/
+
+
 
 # Playwright
 /playwright-report/

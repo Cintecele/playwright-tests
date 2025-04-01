@@ -39,7 +39,7 @@ export class WebActions {
 
     async readDataFromExcel(fileName: string, sheetName: string, rowNum: number, cellNum: number): Promise<string> {
         const workbook = new Workbook();
-        return workbook.xlsx.readFile(`./Downloads/${fileName}`).then(function () {
+        return workbook.xlsx.readFile(`.target/Downloads/${fileName}`).then(function () {
             const sheet = workbook.getWorksheet(sheetName);
             return sheet.getRow(rowNum).getCell(cellNum).toString();
         });

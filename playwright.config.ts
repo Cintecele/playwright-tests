@@ -16,7 +16,7 @@ const reportConfig: OrtoniReportConfig = {
   filename: "OrtoniHtmlReport",
   authorName: "authorName",
   preferredTheme: "dark",
-  folderPath: "html-report",
+  folderPath: "target/html-report",
   projectName: "Playwright Framework with Typescript",
 }
 
@@ -32,7 +32,7 @@ const config: PlaywrightTestConfig = {
   retries: 0,
 
   //Reporters
-  reporter: [[`./CustomReporterConfig.ts`], [`allure-playwright`], [`html`, { outputFolder: 'html-report', open: 'never' }],['ortoni-report', reportConfig]],
+  reporter: [['html', { outputFolder: 'target/test-results' }], [`./CustomReporterConfig.ts`], [`allure-playwright`, { outputDirectory: '../target/allure-results' }], [`html`, { outputFolder: 'target/html-report', open: 'never' }],['ortoni-report', reportConfig]],
 
   projects: [
     {
@@ -68,24 +68,7 @@ const config: PlaywrightTestConfig = {
         }
       },
     },
-    {
-      name: `Chromium`,
-      use: {
-        browserName: `chromium`,
-        baseURL: testConfig[ENV],
-        headless: true,
-        viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-    {
+       {
       name: `Firefox`,
       use: {
         browserName: `firefox`,
@@ -101,9 +84,6 @@ const config: PlaywrightTestConfig = {
           slowMo: 0
         }
       },
-    },
-    {
-      name: `DB`
     },
     {
       name: `API`,

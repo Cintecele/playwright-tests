@@ -122,7 +122,7 @@ export class ElementsPage {
         // Wait for the download process to complete.
         const download = await downloadPromise;
         // File will be downloaded in the Downloads folder of thos project
-        await download.saveAs(path.join(__dirname, `../../Downloads`, download.suggestedFilename()));
+        await download.saveAs(path.join(__dirname, `../../target/Downloads`, download.suggestedFilename()));
     }
 
     async verifyFileUpload(): Promise<void> {

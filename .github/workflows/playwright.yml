@@ -55,7 +55,7 @@ jobs:
       # Check if HTML report exists
       - name: Check if HTML report exists
         run: |
-          if [ -d "html-report" ]; then
+          if [ -d "target/html-report" ]; then
             echo "HTML report exists."
           else
             echo "HTML report does not exist. Exiting..."
@@ -65,7 +65,7 @@ jobs:
 
       # Step to zip html-report folder
       - name: Zip HTML report
-        run: zip -r html-report.zip html-report
+        run: zip -r html-report.zip target/html-report
         # This step should always run, even if previous steps fail
         if: always()
 
