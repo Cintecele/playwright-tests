@@ -37,7 +37,7 @@ jobs:
 
       # Step to install Chrome browser for Playwright
       - name: Install Chrome browser for Playwright
-        run: npx playwright install chrome
+        run: npx playwright install --with-deps chromium
 
       # Step to run tests with qa as environment variable similarly we can define qa|dev|qaApi|devApi
       - name: Run tests
