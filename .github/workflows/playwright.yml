@@ -2,14 +2,15 @@
 name: Playwright Github Actions
 
 # Define when to trigger this workflow
-on: [workflow_dispatch,
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches:
-      - main
-pull_request:
-    branches:
-      - main
-]
+    branches:  [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
 
   # Define the jobs to run in this workflow
 jobs:
