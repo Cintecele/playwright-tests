@@ -17,4 +17,16 @@ test(`Project creation page - Attributive check`, { tag: '@Smoke'}, async ({ pro
         await projectPage.navigateToURL();
         await expect(projectPage.ALL_PROJECTS_HEADER).toBeVisible();
     });
+    await test.step(`Проверка отображения строки поиска в блоке "Все проекты" по плэйсхолдеру`, async () => {
+        await projectPage.navigateToURL();
+        await expect(projectPage.SEARCH_FIELD).toBeVisible();
+    });
+    await test.step(`Проверка отображения заголовка "Доступные" в блоке "Все проекты"`, async () => {
+        await projectPage.navigateToURL();
+        await expect(projectPage.AVAILABLE_PROJECTS).toBeVisible();
+    });
+    await test.step(`Проверка отображения иконки папки "Доступные" в блоке "Все проекты""`, async () => {
+        await projectPage.navigateToURL();
+        await expect(projectPage.AVAILABLE_PROJECTS_SVG).toBeVisible();
+    });
 }); 
