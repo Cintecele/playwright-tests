@@ -9,10 +9,18 @@ export class ProjectsPage {
     readonly ALL_PROJECTS_HEADER: Locator;
     readonly NEW_PROJECT_HEADER: Locator;
     readonly NEW_PROJECT_BUTTON: Locator;
-    readonly SEARCH_FIELD: Locator;
+    readonly ALL_PROJECTS_SEARCH_FIELD: Locator;
     readonly ENABLE_CONTENT_PACKAGES_HEADER: Locator;
     readonly AVAILABLE_PROJECTS: Locator;
     readonly AVAILABLE_PROJECTS_SVG: Locator;
+    readonly IMPORT_PROJECT_DROPEZONE: Locator;
+    readonly CONTENT_PACKAGES_SEARCH_FIELD: Locator;
+    readonly PROJECT_NAME_FIELD: Locator;
+    readonly CREATE_PROJECT_BUTTON: Locator;
+    readonly SELECT_ALL_FB_CHECKBOX: Locator;
+    readonly SINGLE_FB_CHECKBOX: Locator;
+    readonly MAGNIFIER_SVG: Locator;
+    readonly UPLOAD_PROJECT_SVG: Locator;
 
     private static NEW_PROJECT_BUTTON: Locator;
 
@@ -23,10 +31,18 @@ export class ProjectsPage {
         this.NEW_PROJECT_HEADER = page.locator('h2', { hasText: "Новый проект" });
         this.ALL_PROJECTS_HEADER = page.locator('h2', { hasText: "Все проекты" });
         this.ENABLE_CONTENT_PACKAGES_HEADER = page.locator('h2', { hasText: "Включить контент пакеты"});
-        this.SEARCH_FIELD = page.getByPlaceholder('Название проекта');
+        this.ALL_PROJECTS_SEARCH_FIELD = page.getByPlaceholder('Название проекта');
         this.NEW_PROJECT_BUTTON = page.locator('//svg-icon[@name="add"]');
         this.AVAILABLE_PROJECTS = page.locator('div.project-list-group-title');
         this.AVAILABLE_PROJECTS_SVG = page.locator('svg-icon:is([name="folder"])');
+        this.IMPORT_PROJECT_DROPEZONE = page.locator('div.project-create-form-dropzone');
+        this.CONTENT_PACKAGES_SEARCH_FIELD = page.locator('rl-input-placeholder', { hasText: "Название пакета или компонента"});
+        this.PROJECT_NAME_FIELD = page.locator('rl-input-placeholder', { hasText: "Название проекта"});
+        this.CREATE_PROJECT_BUTTON = page.locator('div.dx-button-content');
+        this.SELECT_ALL_FB_CHECKBOX = page.locator('svg.svg--default--off');
+        this.SINGLE_FB_CHECKBOX = page.locator('dx-check-box.dx-checkbox').first();
+        this.MAGNIFIER_SVG = page.locator('//svg-icon[@name="upload_file"]');
+        this.UPLOAD_PROJECT_SVG = page.locator('//svg-icon[@name="upload_file"]');
     }
 
     async navigateToURL(): Promise<void> {
