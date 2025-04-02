@@ -6,16 +6,19 @@ import { WidgetsPage } from '@pages/WidgetsPage';
 import { InteractionsPage } from '@pages/InteractionsPage';
 import { WebActions } from '@lib/WebActions';
 import AxeBuilder from '@axe-core/playwright';
+import {ProjectsPage} from "../pageFactory/arm_engineer/ProjectsPage";
 
 const test = baseTest.extend<{
     webActions: WebActions;
     loginPage: LoginPage;
-    elementsPage: ElementsPage;
+        elementsPage: ElementsPage;
     alertsFrameWindowsPage: AlertsFrameWindowsPage;
     widgetsPage: WidgetsPage;
     interactionsPage: InteractionsPage;
     makeAxeBuilder: AxeBuilder;
     testInfo: TestInfo;
+    projectPage: ProjectsPage;
+
 }>({
     webActions: async ({ page, context }, use) => {
         await use(new WebActions(page, context));
@@ -39,6 +42,9 @@ const test = baseTest.extend<{
         await use(new AxeBuilder({ page })
             .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .exclude('#commonly-reused-element-with-known-issue'));
+    },
+    projectPage: async ({ page, context }, use) => {
+        await use(new ProjectsPage(page, context));
     }
 })
 

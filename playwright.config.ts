@@ -50,8 +50,10 @@ const config: PlaywrightTestConfig = {
         //Browser Mode
         headless: true,
 
+        locale: 'ru-RU',
+
         //Browser height and width
-        viewport: { width: 1500, height: 730 },
+        viewport: { width: 1920, height: 1080 },
         ignoreHTTPSErrors: true,
 
         //Enable File Downloads in Chrome
@@ -68,29 +70,29 @@ const config: PlaywrightTestConfig = {
         }
       },
     },
-       {
-      name: `Firefox`,
-      use: {
-        browserName: `firefox`,
-        baseURL: testConfig[ENV],
-        headless: true,
-        viewport: { width: 1500, height: 730 },
-        ignoreHTTPSErrors: true,
-        acceptDownloads: true,
-        screenshot: `only-on-failure`,
-        video: `retain-on-failure`,
-        trace: `retain-on-failure`,
-        launchOptions: {
-          slowMo: 0
-        }
-      },
-    },
-    {
-      name: `API`,
-      use: {
-        baseURL: testConfig[ENV]
-      }
-    }
+    //    {
+    //   name: `Firefox`,
+    //   use: {
+    //     browserName: `firefox`,
+    //     baseURL: testConfig[ENV],
+    //     headless: true,
+    //     viewport: { width: 1500, height: 730 },
+    //     ignoreHTTPSErrors: true,
+    //     acceptDownloads: true,
+    //     screenshot: `only-on-failure`,
+    //     video: `retain-on-failure`,
+    //     trace: `retain-on-failure`,
+    //     launchOptions: {
+    //       slowMo: 0
+    //     }
+    //   },
+    // },
+    // {
+    //   name: `API`,
+    //   use: {
+    //     baseURL: testConfig[ENV]
+    //   }
+    // }
   ],
 };
 export default config;
