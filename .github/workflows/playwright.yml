@@ -2,16 +2,16 @@
 name: Playwright Github Actions
 
 # Define when to trigger this workflow
-on:
+on: [workflow_dispatch,
   push:
     branches:
       - main
-  pull_request:
+pull_request:
     branches:
       - main
-  workflow_dispatch:
+]
 
-# Define the jobs to run in this workflow
+  # Define the jobs to run in this workflow
 jobs:
   # Define a job named 'build'
   build:
@@ -42,7 +42,7 @@ jobs:
 
       # Step to run tests with qa as environment variable similarly we can define qa|dev|qaApi|devApi
       - name: Run tests
-        run: npm run test:serial
+        run: npm run test
         env:
           npm_config_ENV: "qa"
 
