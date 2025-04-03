@@ -25,6 +25,7 @@
   "author": "author",
   "license": "free",
   "dependencies": {
+    "@angular/common": "^19.2.5",
     "@axe-core/playwright": "^4.10.0",
     "@types/crypto-js": "^4.2.2",
     "@typescript-eslint/eslint-plugin": "^8.3.0",
@@ -33,6 +34,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.29.1",
     "exceljs": "^4.4.0",
+    "form-data": "^4.0.2",
     "lighthouse": "^12.5.1",
     "ortoni-report": "^2.0.3",
     "pdfjs-dist-es5": "^2.13.216",
