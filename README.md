@@ -206,7 +206,7 @@ In the below example wherever '../../pageFactory/pageRepository/' import stateme
 For using this featre in Playwright we use HAR file. 
 HAR (HTTP Archive) is a file format used by several HTTP session tools to export the captured data. This can be highly useful in troubleshooting complex issues by obtaining additional information about the network requests that are generated in the browser while an issue occurs.
 
-To generate HAR file navigate to `HAR.test.ts` inside functional folder, in that use the below line
+To generate HAR file navigate to `HAR.ts` inside functional folder, in that use the below line
 ```JS
 await page.routeFromHAR('har/personalInfo.har',{update:true});
 ```
