@@ -81,7 +81,7 @@ jobs:
       # Step to generate artifact link
       - name: Generate artifact link
         id: artifact_link
-        run: echo "::set-output name=artifact_url::https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        run: echo "name=artifact_url::https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
         if: always()
 
       # Send Slack notification with html-reprt url once the tests are completed
