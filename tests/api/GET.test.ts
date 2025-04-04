@@ -22,9 +22,9 @@ test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
 
     // Добавляем другие заголовки
     headers['Host'] = 'dev114.reglab.ru';
- //   headers['Content-Length'] = form.getLengthSync().toString();
+    //   headers['Content-Length'] = form.getLengthSync().toString();
 
-    let options_ : any = {
+    let options_: any = {
         body: form,
         observe: "response",
         responseType: "blob",
@@ -36,5 +36,14 @@ test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
     console.log(`Статус код: ${response.status()}`);
     console.log('Ответ: ', response.headersArray());
     console.log('Тело ответа', response.text())
+});
+
+test(`GET_PROJECT`, {tag: '@API'}, async ({request}) => {
+
+    const response = await request.get('https://dev114.reglab.ru/summit/api/Project/all');
+
+    expect(response.status()).toBe(200);
+    const responseBody = await response.json();
+    console.log('Тело ответа', responseBody);
 });
 
