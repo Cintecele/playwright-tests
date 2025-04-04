@@ -9,7 +9,7 @@ function clearReports() {
     // Проверяем, существует ли папка с отчетами
     if (fs.existsSync(allureReportsDir)) {
         fs.rmdirSync(allureReportsDir, { recursive: true });
-        console.log('Аллюр тчеты удалены.');
+        console.log('Аллюр отчеты удалены.');
     }
     if (fs.existsSync(testResultsDir)) {
         fs.rmdirSync(testResultsDir, { recursive: true });
@@ -21,4 +21,4 @@ function clearReports() {
     }
 }
 
-clearReports();
+module.exports = clearReports;

@@ -1,5 +1,4 @@
 import {expect, test} from "@playwright/test";
-import FormData from 'form-data';
 
 test(`Get_About`, {tag: '@API'}, async ({request}) => {
     const response = await request.get(`https://dev114.reglab.ru/summit/api/About`);
@@ -12,30 +11,31 @@ test(`Get_About`, {tag: '@API'}, async ({request}) => {
 test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
 
     const form = new FormData();
-    console.log('до', form);
-    form.append('name', new Date().getTime().toString());
+
+    const name = new Date().getTime().toString();
+
+    form.append('name', name);
     form.append('linkedPackages', '0195f4e8-410b-78f2-b1b2-86383c0838a6');
-    console.log('после', form);
 
-    // Получаем заголовки из формы, чтобы использовать правильный boundary
-    const headers = form.getHeaders();
+    const requestPostProject = await request.post('https://dev114.reglab.ru/summit/api/Project', {
+        multipart: form
+    });
 
-    // Добавляем другие заголовки
-    headers['Host'] = 'dev114.reglab.ru';
-    //   headers['Content-Length'] = form.getLengthSync().toString();
+    expect(requestPostProject.status()).toBe(200);
+    const responseBody = await requestPostProject.json();
+    console.log('Проекту присвоен ID: ', responseBody);
 
-    let options_: any = {
-        body: form,
-        observe: "response",
-        responseType: "blob",
-        headers: headers
-    };
-    const response = await request.post('https://dev114.reglab.ru/summit/api/Project', options_);
+    const requestProjectAll = await request.get('https://dev114.reglab.ru/summit/api/Project/all');
 
-    expect(response.status()).toBe(200);
-    console.log(`Статус код: ${response.status()}`);
-    console.log('Ответ: ', response.headersArray());
-    console.log('Тело ответа', response.text())
+    expect(requestProjectAll.status()).toBe(200);
+
+    const responseBody2 = await requestProjectAll.json();
+    console.log('Тело ответа', responseBody2);
+
+    const responseProjectAll = JSON.stringify(responseBody2);
+
+    expect(responseProjectAll.includes(responseBody)).toBe(true);
+    expect(responseProjectAll.includes(name)).toBe(true);
 });
 
 test(`GET_PROJECT`, {tag: '@API'}, async ({request}) => {
