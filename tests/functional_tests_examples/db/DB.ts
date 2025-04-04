@@ -1,4 +1,4 @@
-import { testConfig } from '../../testConfig';
+import { testConfig } from '../../../testConfig';
 import { DBActions } from '@lib/DBActions';
 import { test } from '@playwright/test'
 
