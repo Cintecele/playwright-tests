@@ -1,19 +1,33 @@
-import { APIActions } from '@lib/APIActions';
-import { test } from '@playwright/test';
+import {expect, test} from '@playwright/test';
 
-const apiActions = new APIActions();
+test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
 
-test(`postUsers`, { tag: '@API'}, async ({ request }) => {
+    const form = new FormData();
 
-    //* Body Response Params and Body Response Headers are stored in single text file separated by #
-    const requestBody = JSON.parse((await apiActions.readValuesFromTextFile('postUsers')).split(`#`)[0]);
-    const response = await request.post(`/api/users`, { data: requestBody });
-    await apiActions.verifyStatusCode(response);
+    const name = new Date().getTime().toString();
 
-    const responseBodyParams = (await apiActions.readValuesFromTextFile(`postUsers`)).split(`#`)[1];
-    await apiActions.verifyResponseBody(responseBodyParams, await response.json(), `Response Body`);
+    form.append('name', name);
+    form.append('linkedPackages', '0195f4e8-410b-78f2-b1b2-86383c0838a6');
 
-    const responseBodyHeaders = (await apiActions.readValuesFromTextFile(`postUsers`)).split(`#`)[2];
-    await apiActions.verifyResponseHeader(responseBodyHeaders, response.headersArray(), `Respomse Headers`);
+    const requestPostProject = await request.post('https://dev114.reglab.ru/summit/api/Project', {
+        multipart: form
+    });
+
+    expect(requestPostProject.status()).toBe(200);
+    const responseBody = await requestPostProject.json();
+    console.log('Проекту присвоен ID: ', responseBody);
+
+    const requestProjectAll = await request.get('https://dev114.reglab.ru/summit/api/Project/all');
+
+    expect(requestProjectAll.status()).toBe(200);
+
+    const responseBody2 = await requestProjectAll.json();
+    console.log('Тело ответа', responseBody2);
+
+    const responseProjectAll = JSON.stringify(responseBody2);
+
+    expect(responseProjectAll.includes(responseBody)).toBe(true);
+    expect(responseProjectAll.includes(name)).toBe(true);
 });
+
 
