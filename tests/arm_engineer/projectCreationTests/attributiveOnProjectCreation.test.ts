@@ -32,7 +32,7 @@ test(`Project creation page - Attributive check`, { tag: '@Smoke'}, async ({ pro
     await test.step(`Проверка отображения зоны загрузки проекта`, async () => {
         await projectPage.navigateToURL();
         await  projectPage.clickOnNewProjectButton();
-        await expect(projectPage.IMPORT_PROJECT_DROPEZONE).toBeVisible();
+        await expect(projectPage.IMPORT_PROJECT_DROPZONE).toBeVisible();
     });
     await test.step(`Проверка отображения строки поиска в блоке "Включить контент пакеты" по плэйсхолдеру`, async () => {
         await projectPage.navigateToURL();

@@ -6,7 +6,7 @@ import {WidgetsPage} from '@pages/WidgetsPage';
 import {InteractionsPage} from '@pages/InteractionsPage';
 import {WebActions} from '@lib/WebActions';
 import AxeBuilder from '@axe-core/playwright';
-import {ProjectsPage} from "../pageFactory/arm_engineer/ProjectsPage";
+import {ProjectsPage} from "../pageFactory/arm_engineer/projects-page";
 import {LocatorHelper} from "src/main/helpers/LocatorHelper";
 
 const test = baseTest.extend<{
