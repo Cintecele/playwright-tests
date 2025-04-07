@@ -7,6 +7,7 @@ import {InteractionsPage} from '@pages/InteractionsPage';
 import {WebActions} from '@lib/WebActions';
 import AxeBuilder from '@axe-core/playwright';
 import {ProjectsPage} from "../pageFactory/arm_engineer/ProjectsPage";
+import {LocatorHelper} from "src/main/helpers/LocatorHelper";
 
 const test = baseTest.extend<{
     webActions: WebActions;
@@ -18,6 +19,7 @@ const test = baseTest.extend<{
     makeAxeBuilder: AxeBuilder;
     testInfo: TestInfo;
     projectPage: ProjectsPage;
+    locatorHelper: LocatorHelper;
 
 }>({
     webActions: async ({page, context}, use) => {
@@ -45,6 +47,9 @@ const test = baseTest.extend<{
     },
     projectPage: async ({page, context}, use) => {
         await use(new ProjectsPage(page, context));
+    },
+    locatorHelper: async ({}, use) => {
+        await use(new LocatorHelper());
     }
 })
 

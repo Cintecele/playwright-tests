@@ -18,7 +18,6 @@ test('mock API response', async ({page}) => {
     await page.goto('https://dev114.reglab.ru/arm-engineer/index.html#/main/projects');
 
     // Проверяем, что данные отобразились корректно
-
-    const divSelector = page.locator('//div[(text()= "1234567890")]'); // Замените на ваш актуальный селектор
+    const divSelector = page.locator('//div[(text()= "1234567890")]');
     await expect(divSelector).toBeVisible();
 });

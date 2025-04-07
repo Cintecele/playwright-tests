@@ -1,7 +1,9 @@
 import {BrowserContext, Locator, Page} from '@playwright/test';
 import {WebActions} from "@lib/WebActions";
+import {LocatorHelper} from "src/main/helpers/LocatorHelper";
 
 let webActions: WebActions;
+const locatorHelper = new LocatorHelper();
 
 export class ProjectsPage {
     readonly page: Page;
@@ -21,6 +23,10 @@ export class ProjectsPage {
     readonly SINGLE_FB_CHECKBOX: Locator;
     readonly MAGNIFIER_SVG: Locator;
     readonly UPLOAD_PROJECT_SVG: Locator;
+    readonly PROJECT_NAME_FIELD_INPUT: Locator;
+    readonly PROJECT_NAME_FIELD_INPUT2: Locator;
+    readonly AUTHORIZATION: Locator;
+
 
     private static NEW_PROJECT_BUTTON: Locator;
 
@@ -38,11 +44,18 @@ export class ProjectsPage {
         this.IMPORT_PROJECT_DROPEZONE = page.locator('div.project-create-form-dropzone');
         this.CONTENT_PACKAGES_SEARCH_FIELD = page.locator('rl-input-placeholder', { hasText: "Название пакета или компонента"});
         this.PROJECT_NAME_FIELD = page.locator('rl-input-placeholder', { hasText: "Название проекта"});
+
+        //два подхода к поиску локаторов(второй предпочтительнее)
+        this.PROJECT_NAME_FIELD_INPUT = page.locator('//rl-input-placeholder[(.)=\'Название проекта\']//ancestor::rl-input/input');
+        this.PROJECT_NAME_FIELD_INPUT2 =  page.locator(locatorHelper.getFormInputByPlaceholder("Название проекта").getXpath());
+
+
         this.CREATE_PROJECT_BUTTON = page.locator('div.dx-button-content');
         this.SELECT_ALL_FB_CHECKBOX = page.locator('svg.svg--default--off');
         this.SINGLE_FB_CHECKBOX = page.locator('dx-check-box.dx-checkbox').first();
         this.MAGNIFIER_SVG = page.locator('//svg-icon[@name="upload_file"]');
         this.UPLOAD_PROJECT_SVG = page.locator('//svg-icon[@name="upload_file"]');
+        this.AUTHORIZATION = page.locator('h2', { hasText: "Авторизация" });
     }
 
     async navigateToURL(): Promise<void> {
