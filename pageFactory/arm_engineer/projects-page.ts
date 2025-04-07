@@ -1,6 +1,8 @@
 import {BrowserContext, Locator, Page} from '@playwright/test';
 import {WebActions} from "@lib/WebActions";
 import {LocatorHelper} from "src/main/helpers/LocatorHelper";
+import {constants} from '../../src/main/utils/constants';
+
 
 let webActions: WebActions;
 const locatorHelper = new LocatorHelper();
@@ -51,7 +53,7 @@ export class ProjectsPage {
         webActions = new WebActions(this.page, this.context);
         this.NEW_PROJECT_HEADER = page.locator('h2', {hasText: "Новый проект"});
         this.ALL_PROJECTS_HEADER = page.locator('h2', {hasText: "Все проекты"});
-        this.ENABLE_CONTENT_PACKAGES_HEADER = page.locator(locatorHelper.getHeaderByName("Включить контент пакеты").getXpath());
+        this.ENABLE_CONTENT_PACKAGES_HEADER = page.locator(locatorHelper.getHeaderByName(constants.Headers.enable_content_packages).getXpath());
         this.ALL_PROJECTS_SEARCH_FIELD = page.getByPlaceholder('Название проекта');
         this.NEW_PROJECT_BUTTON = page.locator('//svg-icon[@name="add"]');
         this.AVAILABLE_PROJECTS = page.locator('div.project-list-group-title');

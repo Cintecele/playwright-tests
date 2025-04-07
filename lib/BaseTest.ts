@@ -1,4 +1,4 @@
-import {TestInfo, test as baseTest} from '@playwright/test';
+import {test as baseTest, TestInfo} from '@playwright/test';
 import {LoginPage} from '@pages/LoginPage';
 import {ElementsPage} from '@pages/ElementsPage';
 import {AlertsFrameWindowsPage} from '@pages/AlertsFrameWindowsPage';
@@ -8,6 +8,7 @@ import {WebActions} from '@lib/WebActions';
 import AxeBuilder from '@axe-core/playwright';
 import {ProjectsPage} from "../pageFactory/arm_engineer/projects-page";
 import {LocatorHelper} from "src/main/helpers/LocatorHelper";
+import {constants} from '../src/main/utils/constants';
 
 const test = baseTest.extend<{
     webActions: WebActions;
@@ -20,7 +21,7 @@ const test = baseTest.extend<{
     testInfo: TestInfo;
     projectPage: ProjectsPage;
     locatorHelper: LocatorHelper;
-
+    constants: constants;
 }>({
     webActions: async ({page, context}, use) => {
         await use(new WebActions(page, context));
@@ -50,6 +51,9 @@ const test = baseTest.extend<{
     },
     locatorHelper: async ({}, use) => {
         await use(new LocatorHelper());
+    },
+    constants: async ({}, use) => {
+        await use(new constants());
     }
 })
 

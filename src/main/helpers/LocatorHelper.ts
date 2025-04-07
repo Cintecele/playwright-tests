@@ -6,6 +6,7 @@ export class LocatorHelper {
         return this.xpath;
 
     }
+
     constructor() {
         this.xpath = "";
     }
@@ -16,7 +17,7 @@ export class LocatorHelper {
     }
 
     public getHeaderByName(headerName: string): LocatorHelper {
-        this.xpath = `//h2[(.)='${headerName}"]`;
+        this.xpath = `//h2[(.)='${headerName}']`;
         return this;
     }
 
