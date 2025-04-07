@@ -39,6 +39,7 @@ export class ProjectsPage {
     public setProjectName(name: string) {
         this.projectName = name;
     }
+
     public getProjectName(): string {
         return this.projectName;
     }
@@ -48,28 +49,28 @@ export class ProjectsPage {
         this.page = page;
         this.context = context;
         webActions = new WebActions(this.page, this.context);
-        this.NEW_PROJECT_HEADER = page.locator('h2', { hasText: "Новый проект" });
-        this.ALL_PROJECTS_HEADER = page.locator('h2', { hasText: "Все проекты" });
+        this.NEW_PROJECT_HEADER = page.locator('h2', {hasText: "Новый проект"});
+        this.ALL_PROJECTS_HEADER = page.locator('h2', {hasText: "Все проекты"});
         this.ENABLE_CONTENT_PACKAGES_HEADER = page.locator(locatorHelper.getHeaderByName("Включить контент пакеты").getXpath());
         this.ALL_PROJECTS_SEARCH_FIELD = page.getByPlaceholder('Название проекта');
         this.NEW_PROJECT_BUTTON = page.locator('//svg-icon[@name="add"]');
         this.AVAILABLE_PROJECTS = page.locator('div.project-list-group-title');
         this.AVAILABLE_PROJECTS_SVG = page.locator('svg-icon:is([name="folder"])');
         this.IMPORT_PROJECT_DROPZONE = page.locator('div.project-create-form-dropzone');
-        this.CONTENT_PACKAGES_SEARCH_FIELD = page.locator('rl-input-placeholder', { hasText: "Название пакета или компонента"});
-        this.PROJECT_NAME_FIELD = page.locator('rl-input-placeholder', { hasText: "Название проекта"});
+        this.CONTENT_PACKAGES_SEARCH_FIELD = page.locator('rl-input-placeholder', {hasText: "Название пакета или компонента"});
+        this.PROJECT_NAME_FIELD = page.locator('rl-input-placeholder', {hasText: "Название проекта"});
 
         //два подхода к поиску локаторов(второй предпочтительнее)
         this.PROJECT_NAME_FIELD_INPUT = page.locator('//rl-input-placeholder[(.)=\'Название проекта\']//ancestor::rl-input/input');
-        this.PROJECT_NAME_FIELD_INPUT2 =  page.locator(locatorHelper.getFormInputByRlInputPlaceholder("Название проекта").getXpath());
+        this.PROJECT_NAME_FIELD_INPUT2 = page.locator(locatorHelper.getFormInputByRlInputPlaceholder("Название проекта").getXpath());
 
-         this.CREATED_PROJECT_IN_TREE =  page.locator(locatorHelper.getDivByName(this.projectName).getXpath());
+        this.CREATED_PROJECT_IN_TREE = page.locator(locatorHelper.getDivByName(this.projectName).getXpath());
         this.CREATE_PROJECT_BUTTON = page.locator('div.dx-button-content');
         this.SELECT_ALL_FB_CHECKBOX = page.locator('svg.svg--default--off');
         this.SINGLE_FB_CHECKBOX = page.locator('dx-check-box.dx-checkbox').first();
         this.MAGNIFIER_SVG = page.locator('//svg-icon[@name="upload_file"]');
         this.UPLOAD_PROJECT_SVG = page.locator('//svg-icon[@name="upload_file"]');
-        this.AUTHORIZATION = page.locator('h2', { hasText: "Авторизация" });
+        this.AUTHORIZATION = page.locator('h2', {hasText: "Авторизация"});
         this.LOGIN = page.getByPlaceholder('Логин');
         this.PASSWORD = page.getByPlaceholder('Пароль');
         this.CONTINUE_BUTTON = page.locator(locatorHelper.getButtonByName("Продолжить").getXpath());
