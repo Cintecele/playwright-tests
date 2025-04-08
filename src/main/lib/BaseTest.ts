@@ -4,11 +4,11 @@ import {ElementsPage} from '@pages/ElementsPage';
 import {AlertsFrameWindowsPage} from '@pages/AlertsFrameWindowsPage';
 import {WidgetsPage} from '@pages/WidgetsPage';
 import {InteractionsPage} from '@pages/InteractionsPage';
-import {WebActions} from '@lib/WebActions';
+import {WebActions} from './WebActions';
 import AxeBuilder from '@axe-core/playwright';
-import {ProjectsPage} from "../pageFactory/arm_engineer/projects-page";
-import {LocatorHelper} from "src/main/helpers/LocatorHelper";
-import {constants} from '../src/main/utils/constants';
+import {ProjectsPage} from "../../../pageFactory/arm_engineer/projects-page";
+import {LocatorHelper} from "../helpers/LocatorHelper";
+import {constants} from '../utils/constants';
 
 const test = baseTest.extend<{
     webActions: WebActions;

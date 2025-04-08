@@ -1,4 +1,4 @@
-import test from '@lib/BaseTest';
+import test from '../../src/main/lib/BaseTest';
 
 test(`Generate and verify HAR file for Login Page.`, async ({ page, loginPage, webActions }) => {
     // To record HAR file use below line where "update:true"

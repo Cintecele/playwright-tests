@@ -1,4 +1,4 @@
-import test from '@lib/BaseTest';
+import test from '../../../src/main/lib/BaseTest';
 import { expect } from "@playwright/test";
 
 test(`Verify Page Accessibility`, async ({ page, makeAxeBuilder }) => {

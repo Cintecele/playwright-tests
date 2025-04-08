@@ -1,4 +1,4 @@
-import test from '@lib/BaseTest';
+import test from '../../src/main/lib/BaseTest';
 
 test(`Verify Alerts, Frame & Windows Page`, { tag: '@Smoke'}, async ({ loginPage, alertsFrameWindowsPage, webActions }) => {
     await loginPage.navigateToURL();

@@ -1,4 +1,4 @@
-import test from '@lib/BaseTest';
+import test from '../../src/main/lib/BaseTest';
 
 test(`Verify Widgets Page`, { tag: '@Smoke'}, async ({ loginPage, widgetsPage, webActions }) => {
     await loginPage.navigateToURL();

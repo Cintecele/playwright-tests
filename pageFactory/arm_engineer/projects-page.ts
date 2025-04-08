@@ -1,5 +1,5 @@
 import {BrowserContext, Locator, Page} from '@playwright/test';
-import {WebActions} from "@lib/WebActions";
+import {WebActions} from "../../src/main/lib/WebActions";
 import {LocatorHelper} from "src/main/helpers/LocatorHelper";
 import {constants} from '../../src/main/utils/constants';
 
