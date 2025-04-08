@@ -51,7 +51,7 @@ test(`Project creation page - Attributive check`, { tag: '@Smoke'}, async ({ pro
     });
     await test.step(`Проверка отображения чекбокса "Выбрать все функциональные блоки" в блоке "Включить контент пакеты"`, async () => {
         await projectPage.navigateToURL();
-       // await  projectPage.clickOnNewProjectButton();
+        await  projectPage.clickOnNewProjectButton();
         await expect(projectPage.SELECT_ALL_FB_CHECKBOX).toBeVisible();
     });
     await test.step(`Проверка отображения чекбокса "Выбрать функциональный блок" в блоке "Включить контент пакеты"`, async () => {
