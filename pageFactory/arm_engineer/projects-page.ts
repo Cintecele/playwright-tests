@@ -34,6 +34,9 @@ export class ProjectsPage {
     readonly CONTINUE_BUTTON: Locator;
     readonly MENU_BUTTON: Locator;
     readonly CREATED_PROJECT_IN_TREE: Locator;
+    readonly PROJECT_654: Locator;
+    readonly PLC_BOX: Locator;
+    readonly CANVAS_EDITOR: Locator;
 
 
     private static NEW_PROJECT_BUTTON: Locator;
@@ -61,12 +64,9 @@ export class ProjectsPage {
         this.IMPORT_PROJECT_DROPZONE = page.locator('div.project-create-form-dropzone');
         this.CONTENT_PACKAGES_SEARCH_FIELD = page.locator('rl-input-placeholder', {hasText: "Название пакета или компонента"});
         this.PROJECT_NAME_FIELD = page.locator('rl-input-placeholder', {hasText: "Название проекта"});
-
-        //два подхода к поиску локаторов(второй предпочтительнее)
-        this.PROJECT_NAME_FIELD_INPUT = page.locator('//rl-input-placeholder[(.)=\'Название проекта\']//ancestor::rl-input/input');
         this.PROJECT_NAME_FIELD_INPUT2 = page.locator(locatorHelper.getFormInputByRlInputPlaceholder("Название проекта").getXpath());
-
         this.CREATED_PROJECT_IN_TREE = page.locator(locatorHelper.getDivByName(this.projectName).getXpath());
+        this.PROJECT_654 = page.locator(locatorHelper.getDivByName('new').getXpath());
         this.CREATE_PROJECT_BUTTON = page.locator('div.dx-button-content');
         this.SELECT_ALL_FB_CHECKBOX = page.locator('svg.svg--default--off');
         this.SINGLE_FB_CHECKBOX = page.locator('dx-check-box.dx-checkbox').first();
@@ -77,6 +77,8 @@ export class ProjectsPage {
         this.PASSWORD = page.getByPlaceholder('Пароль');
         this.CONTINUE_BUTTON = page.locator(locatorHelper.getButtonByName("Продолжить").getXpath());
         this.MENU_BUTTON = page.locator(locatorHelper.getButtonByName("Меню").getXpath());
+        this.PLC_BOX = page.locator('.plc-box', {hasText: "VPLCVPLCDeviceGroup"}).first();
+        this.CANVAS_EDITOR = page.locator('.canvas-editor');
     }
 
     async navigateToURL(): Promise<void> {
