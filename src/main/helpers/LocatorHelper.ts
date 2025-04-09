@@ -82,4 +82,11 @@ export class LocatorHelper {
         this.xpath = `//*[@id="${id}"]`;
         return this;
     }
+
+    // Метод для установки локатора input по классу (XPath)
+    public getInputByClassXpath(className: string): LocatorHelper {
+        this.locatorType = 'xpath';
+        this.xpath = `//input[(@class='${className}')]`;
+        return this;
+    }
 }

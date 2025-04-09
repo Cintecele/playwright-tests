@@ -20,7 +20,6 @@ export class ProjectsPage {
     readonly AVAILABLE_PROJECTS_SVG: Locator;
     readonly IMPORT_PROJECT_DROPZONE: Locator;
     readonly CONTENT_PACKAGES_SEARCH_FIELD: Locator;
-    readonly PROJECT_NAME_FIELD: Locator;
     readonly CREATE_PROJECT_BUTTON: Locator;
     readonly SELECT_ALL_FB_CHECKBOX: Locator;
     readonly SINGLE_FB_CHECKBOX: Locator;
@@ -34,6 +33,8 @@ export class ProjectsPage {
     readonly MENU_BUTTON: Locator;
     readonly CREATED_PROJECT_IN_TREE: Locator;
     readonly PROJECT_654: Locator;
+    readonly IMPORTED_PROJECT_IN_DROPZONE: Locator;
+    readonly DROPZONE_INPUT: Locator;
 
 
 
@@ -74,7 +75,8 @@ export class ProjectsPage {
         this.PASSWORD = page.getByPlaceholder('Пароль');
         this.CONTINUE_BUTTON = page.locator(locatorHelper.getButtonByName("Продолжить").getXpath());
         this.MENU_BUTTON = page.locator(locatorHelper.getButtonByName("Меню").getXpath());
-
+        this.IMPORTED_PROJECT_IN_DROPZONE = page.locator(locatorHelper.getDivByName('new.project').getXpath());
+        this.DROPZONE_INPUT = page.locator(locatorHelper.getInputByClassXpath('dropzone-input').getXpath());
     }
 
     async navigateToURL(): Promise<void> {
