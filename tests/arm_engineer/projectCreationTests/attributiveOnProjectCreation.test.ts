@@ -42,7 +42,7 @@ test(`Project creation page - Attributive check`, { tag: '@Smoke'}, async ({ pro
     await test.step(`Проверка отображения текстового поля "Название проекта" в блоке "Новый проект"`, async () => {
         await projectPage.navigateToURL();
         await  projectPage.clickOnNewProjectButton();
-        await expect(projectPage.PROJECT_NAME_FIELD).toBeVisible();
+        await expect(projectPage.PROJECT_NAME_FIELD_INPUT).toBeVisible();
     });
     await test.step(`Проверка отображения кнопки "Создать проект" в блоке "Новый проект"`, async () => {
         await projectPage.navigateToURL();

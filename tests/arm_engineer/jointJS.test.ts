@@ -13,29 +13,46 @@ test.beforeEach(async ({projectPage: projectPage}): Promise<void> => {
 })
 
 
-test(`Переместить ПЛК при работе c jointJS`, {tag: '@Smoke'}, async ({projectPage: projectPage, page}) => {
+test(`Переместить ПЛК при работе c jointJS`, {tag: '@Smoke'}, async ({projectPage: projectPage, page, canvasPage}) => {
     await test.step(`Создание и загрузка нового проекта`, async () => {
-        await expect(projectPage.PLC_BOX).toBeVisible();
+        await expect(canvasPage.PLC_R500_9_BOX).toBeVisible();
 
         // Получаем исходные координаты элемента до перетаскивания
-        const initialBoundingBox = await projectPage.PLC_BOX.boundingBox();
+        const initialBoundingBox = await canvasPage.PLC_R500_9_BOX.boundingBox();
         const initialX = initialBoundingBox.x;
         const initialY = initialBoundingBox.y;
 
         console.log('Initial Position:', initialX, initialY);
 
         // Перетаскиваем элемент на новые координаты
-        await projectPage.PLC_BOX.dragTo(projectPage.CANVAS_EDITOR, {targetPosition: {x: 0, y: 0}});
+        await canvasPage.PLC_R500_9_BOX.dragTo(canvasPage.CANVAS_EDITOR, {targetPosition: {x: 500, y: 500}});
 
         // Получаем новые координаты элемента после перетаскивания
-        const newBoundingBox = await projectPage.PLC_BOX.boundingBox();
+        const newBoundingBox = await canvasPage.PLC_R500_9_BOX.boundingBox();
         const newX = newBoundingBox.x;
         const newY = newBoundingBox.y;
 
         console.log('New Position:', newX, newY);
 
         // Проверяем, что элемент был перемещен на ожидаемое расстояние
-        expect(newX).toBeCloseTo(396.5, 1);
-        expect(newY).toBeCloseTo(32, 1);
+        expect(newX).toBeCloseTo(900.5, 1);
+        expect(newY).toBeCloseTo(536, 1);
+    });
+});
+
+test(`Проверка пунктов контекстного меню на ПЛК при работе c jointJS`, {tag: '@Smoke'}, async ({projectPage: projectPage, page, canvasPage}) => {
+    await test.step(`Создание и загрузка нового проекта`, async () => {
+        await expect(canvasPage.PLC_R500_9_BOX).toBeVisible();
+        await canvasPage.PLC_R500_9_BOX.click({button: "right"})
+        await expect (canvasPage.DELETE_CONTEXT_ACTION).toBeVisible();
+        await expect (canvasPage.PROPERTY_CONTEXT_ACTION).toBeVisible();
+    });
+});
+
+test(`Проверка пунктов контекстного меню на канве при работе c jointJS`, {tag: '@Smoke'}, async ({projectPage: projectPage, page, canvasPage}) => {
+    await test.step(`Создание и загрузка нового проекта`, async () => {
+        await expect(canvasPage.CANVAS_EDITOR).toBeVisible();
+        await canvasPage.CANVAS_EDITOR.click({button: "right"})
+        await expect (canvasPage.ADD_DEVICE_CONTEXT_ACTION).toBeVisible();
     });
 });

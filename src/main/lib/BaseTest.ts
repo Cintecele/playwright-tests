@@ -9,6 +9,7 @@ import AxeBuilder from '@axe-core/playwright';
 import {ProjectsPage} from "../../../pageFactory/arm_engineer/projects-page";
 import {LocatorHelper} from "../helpers/LocatorHelper";
 import {constants} from '../utils/constants';
+import {CanvasPage} from '../../../pageFactory/arm_engineer/canvas-page';
 
 const test = baseTest.extend<{
     webActions: WebActions;
@@ -22,6 +23,7 @@ const test = baseTest.extend<{
     projectPage: ProjectsPage;
     locatorHelper: LocatorHelper;
     constants: constants;
+    canvasPage: CanvasPage;
 }>({
     webActions: async ({page, context}, use) => {
         await use(new WebActions(page, context));
@@ -54,6 +56,9 @@ const test = baseTest.extend<{
     },
     constants: async ({}, use) => {
         await use(new constants());
+    },
+    canvasPage: async ({page, context}, use) => {
+        await use(new CanvasPage(page, context));
     }
 })
 
