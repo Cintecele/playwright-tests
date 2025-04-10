@@ -1,14 +1,17 @@
 import {expect, test} from '@playwright/test';
 import {project} from "../../src/main/data/entity/endpoints/project";
+import {postApiProject} from "../../src/main/data/entity/dto/post-api-project";
+
 
 test(`Создать новый проект (без авторизации)`, {tag: '@API'}, async ({request}) => {
 
     const form = new FormData();
 
     const name = new Date().getTime().toString();
+    const postApiProjectDTO = postApiProject.postApiProjectDTO(name, ["01961436-2693-7f7a-84dd-b124ba703e42"]); //Добавить обработку множества linkedPackages. нужно передавать каждый элемент массива в отдельный form.append('linkedPackages'
 
-    form.append('name', name);
-    form.append('linkedPackages', '0195f4e8-410b-78f2-b1b2-86383c0838a6');
+    form.append('name', postApiProjectDTO.name);
+    form.append('linkedPackages', postApiProjectDTO.linkedPackages.toString());
 
     const requestPostProject = await request.post(project.project, {
         multipart: form
