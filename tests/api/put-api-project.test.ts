@@ -38,7 +38,7 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
     const newProjectDTO = putApiProjectDTO.ProjectDTO(projectId, newName);
 
     newForm.append('id', newProjectDTO.id);
-    // newForm.append('newName', newProjectDTO.newName);
+    newForm.append('newName', newProjectDTO.newName);
     const headers = {
         accept: "*/*",
         Authorization: `Bearer ${responseWithToken.Jwt}`
@@ -47,7 +47,7 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
     console.log(responseWithToken);
     console.log(headers);
     console.log(projectId);
-    const requestPutProject = await request.put(`${project.project}/${projectId}`, {
+    const requestPutProject = await request.put(`${project.project}`, {
         multipart: newForm,
         headers,
     });
@@ -59,5 +59,5 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
     expect(requestProjectAll.status()).toBe(200);
     const responseBody2 = await requestProjectAll.json();
     const responseProjectAll = JSON.stringify(responseBody2);
-    //expect(responseProjectAll.includes(newName)).toBe(true);
+    expect(responseProjectAll.includes(newName)).toBe(true);
 });

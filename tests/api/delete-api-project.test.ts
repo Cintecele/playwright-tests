@@ -5,7 +5,7 @@ import {postApiProjectDTO} from "../../src/main/data/entity/dto/post-api-project
 import {postApiAccountSigninDTO} from "../../src/main/data/entity/dto/post-api-Account-signin-DTO";
 import {account} from "../../src/main/data/entity/endpoints/account";
 
-test(`Переименовать проект`, {tag: '@API'}, async ({request}) => {
+test(`Удалить проект`, {tag: '@API'}, async ({request}) => {
 
 //создаем проект для переименования
     const form = new FormData();
