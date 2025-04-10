@@ -14,11 +14,10 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
     form.append('name', projectDTO.name);
     form.append('linkedPackages', projectDTO.linkedPackages.toString());
 
-     const requestPostProject = await request.post(project.project, {
+    const requestPostProject = await request.post(project.project, {
         multipart: form
     });
     const projectId = await requestPostProject.json();
-
 
 //Получаем токен
     const authForm = new FormData();
@@ -39,17 +38,15 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
 
     newForm.append('id', newProjectDTO.id);
     newForm.append('newName', newProjectDTO.newName);
-    const headers = {
-        accept: "*/*",
-        Authorization: `Bearer ${responseWithToken.Jwt}`
-    };
 
-    console.log(responseWithToken);
-    console.log(headers);
-    console.log(projectId);
     const requestPutProject = await request.put(`${project.project}`, {
-        multipart: newForm,
-        headers,
+        params: {   //Использовать params или multipart зависит от запроса, params конкатенирует параметры в URL запроса, multipart передает их в теле с этим типом
+            id: projectId,
+            newName: newName
+        },
+        headers: {
+            Authorization: `Bearer ${responseWithToken.Jwt}`
+        }
     });
     expect(requestPutProject.status()).toBe(200);
 
