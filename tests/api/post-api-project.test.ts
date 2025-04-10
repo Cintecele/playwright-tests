@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
 import {project} from "../../src/main/data/entity/endpoints/project";
-import {postApiProject} from "../../src/main/data/entity/dto/post-api-project";
+import {postApiProjectDTO} from "../../src/main/data/entity/dto/post-api-project-DTO";
 
 
 test(`Создать новый проект (без авторизации)`, {tag: '@API'}, async ({request}) => {
@@ -8,7 +8,7 @@ test(`Создать новый проект (без авторизации)`, {
     const form = new FormData();
 
     const name = new Date().getTime().toString();
-    const postApiProjectDTO = postApiProject.postApiProjectDTO(name, ["01961436-2693-7f7a-84dd-b124ba703e42"]); //Добавить обработку множества linkedPackages. нужно передавать каждый элемент массива в отдельный form.append('linkedPackages'
+    const postApiProjectDTO = postApiProjectDTO.postApiProjectDTO(name, ["01961436-2693-7f7a-84dd-b124ba703e42"]); //Добавить обработку множества linkedPackages. нужно передавать каждый элемент массива в отдельный form.append('linkedPackages'
 
     form.append('name', postApiProjectDTO.name);
     form.append('linkedPackages', postApiProjectDTO.linkedPackages.toString());
