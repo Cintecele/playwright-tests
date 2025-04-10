@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
 import {postApiAccountSignin} from "../../src/main/data/entity/dto/post-api-Account-signin";
-import {client} from "../../src/main/data/entity/client";
+import {account} from "../../src/main/data/entity/endpoints/account";
 
 test(`@API getUsersToken`, async ({request}) => {
     const form = new FormData();
@@ -12,7 +12,7 @@ test(`@API getUsersToken`, async ({request}) => {
     form.append('password', postApiAccountSigninDTO.password);
     form.append('projectId', postApiAccountSigninDTO.projectId);
 
-    const requestPostProject = await request.post(client.signin, {
+    const requestPostProject = await request.post(account.signin, {
         multipart: form
     });
 

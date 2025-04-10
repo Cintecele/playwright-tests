@@ -1,5 +1,4 @@
 export const testConfig = {
- //   qa: `https://demoqa.com`,
     qa:'https://dev114.reglab.ru/arm-engineer/index.html#/main/projects',
     dev: ``,
     qaApi: `https://dev114.reglab.ru/summit`,

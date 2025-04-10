@@ -1,6 +1,7 @@
 import {expect, test} from '@playwright/test';
+import {project} from "../../src/main/data/entity/endpoints/project";
 
-test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
+test(`Создать новый проект (без авторизации)`, {tag: '@API'}, async ({request}) => {
 
     const form = new FormData();
 
@@ -9,7 +10,7 @@ test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
     form.append('name', name);
     form.append('linkedPackages', '0195f4e8-410b-78f2-b1b2-86383c0838a6');
 
-    const requestPostProject = await request.post('https://dev114.reglab.ru/summit/api/Project', {
+    const requestPostProject = await request.post(project.project, {
         multipart: form
     });
 
@@ -17,7 +18,7 @@ test(`POST_CREATE_PROJECT`, {tag: '@API'}, async ({request}) => {
     const responseBody = await requestPostProject.json();
     console.log('Проекту присвоен ID: ', responseBody);
 
-    const requestProjectAll = await request.get('https://dev114.reglab.ru/summit/api/Project/all');
+    const requestProjectAll = await request.get(project.all);
 
     expect(requestProjectAll.status()).toBe(200);
 
