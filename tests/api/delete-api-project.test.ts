@@ -34,30 +34,23 @@ test(`Переименовать проект`, {tag: '@API'}, async ({request})
 
 //Переименовываем созданный проект
     const newForm = new FormData();
-    const newName = new Date().getTime().toString();
-    const newProjectDTO = putApiProjectDTO.ProjectDTO(projectId, newName);
-
+    const newProjectDTO = putApiProjectDTO.ProjectDTO(projectId, name);
     newForm.append('id', newProjectDTO.id);
-    // newForm.append('newName', newProjectDTO.newName);
-    const headers = {
-        accept: "*/*",
-        Authorization: `Bearer ${responseWithToken.Jwt}`
-    };
 
-    console.log(responseWithToken);
-    console.log(headers);
-    console.log(projectId);
-    const requestPutProject = await request.put(`${project.project}/${projectId}`, {
+    const requestPutProject = await request.delete(`${project.project}/${projectId}`, {
         multipart: newForm,
-        headers,
+        headers: {
+            accept: "*/*",
+            Authorization: `Bearer ${responseWithToken.Jwt}`
+        }
     });
     expect(requestPutProject.status()).toBe(200);
 
-// Проверка, что переименованный проект в списке
+// Проверка, что проекта нет в списке
 
     const requestProjectAll = await request.get(project.all);
     expect(requestProjectAll.status()).toBe(200);
     const responseBody2 = await requestProjectAll.json();
     const responseProjectAll = JSON.stringify(responseBody2);
-    //expect(responseProjectAll.includes(newName)).toBe(true);
+    expect(responseProjectAll.includes(name)).toBe(false);
 });
