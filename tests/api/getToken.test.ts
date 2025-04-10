@@ -6,11 +6,11 @@ test(`@API getUsersToken`, async ({request}) => {
     const form = new FormData();
     const name = "0195fad4-bd60-78ca-b2c4-c09c9b5d49bd";
 
-    const postApiAccountSigninDTO = postApiAccountSigninDTO.postApiAccountSigninDTO("1", "1", name);
+    const accountSigninDTO = postApiAccountSigninDTO.AccountSigninDTO("1", "1", name);
 
-    form.append('login', postApiAccountSigninDTO.username);
-    form.append('password', postApiAccountSigninDTO.password);
-    form.append('projectId', postApiAccountSigninDTO.projectId);
+    form.append('login', accountSigninDTO.username);
+    form.append('password', accountSigninDTO.password);
+    form.append('projectId', accountSigninDTO.projectId);
 
     const requestPostProject = await request.post(account.signin, {
         multipart: form

@@ -1,5 +1,5 @@
 export class postApiProjectDTO {
-    static postApiProjectDTO(name: string, linkedPackages: string[]) {
+    static ProjectDTO(name: string, linkedPackages: string[]) {
         return {
             name,
             linkedPackages,
