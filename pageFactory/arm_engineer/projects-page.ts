@@ -31,10 +31,12 @@ export class ProjectsPage {
     readonly PASSWORD: Locator
     readonly CONTINUE_BUTTON: Locator;
     readonly MENU_BUTTON: Locator;
+    readonly ACCEPT_BUTTON: Locator;
     readonly CREATED_PROJECT_IN_TREE: Locator;
     readonly PROJECT_654: Locator;
     readonly IMPORTED_PROJECT_IN_DROPZONE: Locator;
     readonly DROPZONE_INPUT: Locator;
+    readonly ALL_GENERATED_PROJECTS: Locator;
 
 
 
@@ -75,8 +77,10 @@ export class ProjectsPage {
         this.PASSWORD = page.getByPlaceholder('Пароль');
         this.CONTINUE_BUTTON = page.locator(locatorHelper.getButtonByName("Продолжить").getXpath());
         this.MENU_BUTTON = page.locator(locatorHelper.getButtonByName("Меню").getXpath());
+        this.ACCEPT_BUTTON = page.locator(locatorHelper.getDivByClassAndName("Принять", "dx-button-content").getXpath());
         this.IMPORTED_PROJECT_IN_DROPZONE = page.locator(locatorHelper.getDivByName('new.project').getXpath());
         this.DROPZONE_INPUT = page.locator(locatorHelper.getInputByClassXpath('dropzone-input').getXpath());
+        this.ALL_GENERATED_PROJECTS = page.locator(locatorHelper.getDivByClassAndName('1744', 'link link--light-theme').getXpath()).first();
     }
 
     async navigateToURL(): Promise<void> {

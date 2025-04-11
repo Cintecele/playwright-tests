@@ -24,7 +24,7 @@ export class CanvasPage {
         this.PLC_R500_9_BOX = page.locator(locatorHelper.getPlcByNameXpath("R500_PLC_9").getXpath()).first();
         this.PLC_VPLC_BOX = page.locator(locatorHelper.getPlcByNameXpath("VPLC").getXpath()).first();
         this.CANVAS_EDITOR = page.locator(locatorHelper.getCanvas().getCss());
-        this.DELETE_CONTEXT_ACTION = page.locator(locatorHelper.getDivByName("Удалить").getXpath());
+        this.DELETE_CONTEXT_ACTION = page.locator(locatorHelper.getSpanByClassAndName("Удалить", "rl-li-content").getXpath());
         this.PROPERTY_CONTEXT_ACTION = page.locator(locatorHelper.getDivByName("Свойства...").getXpath());
         this.ADD_DEVICE_CONTEXT_ACTION = page.locator(locatorHelper.getDivByName("Добавить устройство...").getXpath());
     }

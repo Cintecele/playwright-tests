@@ -1,6 +1,6 @@
 import {expect, test} from '@playwright/test';
-import {project} from "../../src/main/data/entity/endpoints/project";
-import {postApiProjectDTO} from "src/main/data/entity/dto/post-api-project-DTO";
+import {project} from "../../../src/main/data/entity/endpoints/project";
+import {postApiProjectDTO} from "../../../src/main/data/entity/dto/api-project/post-api-project-DTO";
 
 
 test(`Создать новый проект (без авторизации)`, {tag: '@API'}, async ({request}) => {

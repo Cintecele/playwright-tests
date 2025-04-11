@@ -1,9 +1,9 @@
 import {expect, test} from "@playwright/test";
-import {project} from "../../src/main/data/entity/endpoints/project";
-import {putApiProjectDTO} from "../../src/main/data/entity/dto/put-api-project-DTO";
-import {postApiProjectDTO} from "../../src/main/data/entity/dto/post-api-project-DTO";
-import {postApiAccountSigninDTO} from "../../src/main/data/entity/dto/post-api-Account-signin-DTO";
-import {account} from "../../src/main/data/entity/endpoints/account";
+import {project} from "../../../src/main/data/entity/endpoints/project";
+import {putApiProjectDTO} from "../../../src/main/data/entity/dto/api-project/put-api-project-DTO";
+import {postApiProjectDTO} from "../../../src/main/data/entity/dto/api-project/post-api-project-DTO";
+import {postApiAccountSigninDTO} from "../../../src/main/data/entity/dto/api-account/post-api-Account-signin-DTO";
+import {account} from "../../../src/main/data/entity/endpoints/account";
 
 test(`Переименовать проект`, {tag: '@API'}, async ({request}) => {
 

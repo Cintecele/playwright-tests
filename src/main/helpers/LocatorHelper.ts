@@ -39,7 +39,25 @@ export class LocatorHelper {
 
     public getDivByName(divName: string): LocatorHelper {
         this.locatorType = 'xpath';
-        this.xpath = `//div[(text()= "${divName}")]`;
+        this.xpath = `//div[normalize-space(text()= "${divName}")]`;
+        return this;
+    }
+
+    public getSpanByName(divName: string): LocatorHelper {
+        this.locatorType = 'xpath';
+        this.xpath = `//span[normalize-space(text()= "${divName}")]`;
+        return this;
+    }
+
+    public getSpanByClassAndName(text: string, className: string): LocatorHelper {
+        this.locatorType = 'xpath';
+        this.xpath = `//span[normalize-space(text()= "${text}") and (@class= '${className}')]`;
+        return this;
+    }
+
+    public getDivByClassAndName(text: string, className: string): LocatorHelper {
+        this.locatorType = 'xpath';
+        this.xpath = `//div[contains(., "${text}") and @class='${className}']`;
         return this;
     }
 
@@ -89,4 +107,13 @@ export class LocatorHelper {
         this.xpath = `//input[(@class='${className}')]`;
         return this;
     }
+
+    public getAllGeneratedProjectsXpath(mask: string): LocatorHelper {
+        this.locatorType = 'xpath';
+        this.xpath = `//button//div[contains((.),  '${mask}')]`;
+        return this;
+    }
+}
+
+export default class locatorHelper {
 }

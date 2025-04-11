@@ -1,5 +1,5 @@
 import {expect, test} from "@playwright/test";
-import {project} from "../../src/main/data/entity/endpoints/project";
+import {project} from "../../../src/main/data/entity/endpoints/project";
 
 test(`Запросить все проекты (без авторизации)`, {tag: '@API'}, async ({request}) => {
 

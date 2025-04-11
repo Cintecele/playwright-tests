@@ -1,6 +1,6 @@
 import {expect, test} from "@playwright/test";
-import {postApiAccountSigninDTO} from "../../src/main/data/entity/dto/post-api-Account-signin-DTO";
-import {account} from "../../src/main/data/entity/endpoints/account";
+import {postApiAccountSigninDTO} from "../../../src/main/data/entity/dto/api-account/post-api-Account-signin-DTO";
+import {account} from "../../../src/main/data/entity/endpoints/account";
 
 test(`@API getUsersToken`, async ({request}) => {
     const form = new FormData();
